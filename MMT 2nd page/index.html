@@ -22,8 +22,11 @@
 
     <!-- Combined CSS Styles -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+
         :root {
-            --background-color: rgb(0, 0, 0);
+            --background-color: #141414;;
             --border-color: rgba(118, 115, 115, 0.191);
         }
 
@@ -44,11 +47,13 @@
 
         * {
             box-sizing: border-box;
+            font-family: "Alegreya";
         }
 
         img {
-            height: 50px;
-            width: 150px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
         }
 
         #trailer {
@@ -99,282 +104,281 @@
             text-decoration: none;
         }
 
-        /* --- NAV STYLES (Fixed Position) --- */
+        /* --- NAV STYLES --- */
+        /* Nav bar */
+
         nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: auto; /* Adjusted to auto */
-            z-index: 300; /* High Z-index to always be on top */
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        padding: 2.5em; 
+        height: 0; 
+        z-index: 101; 
+        
         }
 
+        nav > .logo, 
+        nav > .menu-toggle {
+            position: relative; 
+            top: 2.5em; 
+            left: 2.5em; 
+        }
+
+        nav {
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        padding: 0; 
+        height: 0; 
+        z-index: 101;
+        }
         nav:before {
             content: '';
             display: block;
-            padding-top: 2.5em;
-            padding-bottom: 2.5em;
-        }
+            padding-top: 2.5em; 
+            padding-bottom: 2.5em; }
 
-        nav>.logo {
+        /* Reposition the menu content using absolute positioning */
+        nav > .logo {
             position: absolute;
             top: 2.5em;
             left: 2.5em;
         }
 
-        nav>.menu-toggle {
+        nav > .menu-toggle {
             position: absolute;
             top: 2.5em;
-            left: 2.5em; 
+            right: 2.5em; 
         }
 
-        a,
-        p {
-            position: relative;
-            text-decoration: none;
-            color: black;
-            font-size: 1rem;
-            font-weight: 500;
-            user-select: none;
-            text-transform: uppercase;
+        a, p{
+        position: relative;
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        font-weight: 500;
+        user-select: none;
+        text-transform: uppercase;
         }
 
-        .white_text {
-            position: relative;
-            text-decoration: none;
-            color: white;
-            font-size: 1rem;
-            font-weight: 500;
-            user-select: none;
-            text-transform: uppercase;
+        .white_text{
+        position: relative;
+        text-decoration: none;
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        user-select: none;
+        text-transform: uppercase;
         }
 
         .socials.white_text a {
-            color: white;
+        color: white;
         }
 
-        .logo a {
-            font-weight: 600;
+        .logo a{
+        font-weight: 600;
         }
 
-        .menu-toggle {
-            position: relative;
-            width: 3rem;
-            height: 1.5rem;
-            cursor: pointer;
+        .menu-toggle{
+        position: relative;
+        width: 3rem;
+        height: 1.5rem;
+        cursor: pointer;
         }
 
-        .menu-toggle p {
-            position: absolute;
-            transform-origin: top left;
-            will-change: transform, opacity;
+        .menu-toggle p{
+        position: absolute;
+        transform-origin: top left;
+        will-change: transform, opacity;
         }
 
-        .menu-overlay {
-            position: fixed;
-            width: 100vw;
-            height: 100svh;
-            top: 0;
-            left: 0;
-            background-color: black;
-            /* Added background color */
-            z-index: 100;
-            /* Placed behind the container, but above main content */
-            clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-            /* Start hidden */
-            will-change: clip-path;
+        .menu-overlay{
+        position: fixed;
+        width: 100vw;
+        height: 100svh;
+        z-index: 1; /* Shader Disabled here... */
         }
 
-        .menu-content {
-            position: fixed;
-            width: 100vw;
-            height: 100svh;
-            top: 0;
-            left: 0;
-            z-index: 101;
-            /* Placed above the overlay */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform-origin: left bottom;
-            will-change: transform, opacity;
-
-            transform: translateX(-100px) translateY(-100px) scale(1.5) rotate(-150deg);
-            opacity: 0.25;
+        .menu-content{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-origin: left bottom;
+        will-change: transform, opacity;
         }
 
-        .menu-items,
-        .menu-footer {
-            width: 100%;
-            padding: 2.5em;
-            display: flex;
-            gap: 2.5em;
+        .menu-items, .menu-footer{
+        width: 100%;
+        padding: 2.5em;
+        display: flex;
+        gap: 2.5em;
         }
 
-        .col-lg {
-            flex: 3;
+        .col-lg{
+        flex: 3;
         }
 
-        .col-sm {
-            flex: 2;
+        .col-sm{
+        flex: 2;
         }
 
-        .menu-items .col-lg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .menu-items .col-lg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
-        .menu-preview-img {
-            position: relative;
-            width: 45%;
-            height: 100%;
-            overflow: hidden;
+        .menu-preview-img{
+        position: relative;
+        width: 45%;
+        height: 100%;
+        overflow: hidden;
         }
 
-        .menu-preview-img img {
-            position: absolute;
-            will-change: transform, opacity;
+        .menu-preview-img img{
+        position: absolute;
+        will-change: transform, opacity;
         }
 
-        .menu-items .col-sm {
-            padding: 2.5em 0;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5em;
+        .menu-items .col-sm{
+        padding: 2.5em 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5em;
         }
 
-        .menu-links,
-        .menu-socials {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5em;
+        .menu-links, .menu-socials{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
         }
 
-        .link,
-        .social {
-            padding-bottom: 6px;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        .link, .social{
+        padding-bottom: 6px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
 
-        .link a,
-        .social a {
-            display: inline-block;
-            will-change: transform;
-            transition: color 0.5s;
+        .link a, .social a{
+        display: inline-block;
+        will-change: transform;
+        transition: color 0.5s;
         }
 
-        .link a {
-            font-size: 3.5em;
-            letter-spacing: -0.02rem;
+        .link a{
+        font-size: 3.5em;
+        letter-spacing: -0.02rem;
         }
 
-        .social a {
-            color: #8f8f8f;
+        .social a{
+        color: #8f8f8f;
         }
 
-        .social a:hover {
-            color: #fff;
+        .social a:hover{
+        color: #fff;
         }
 
-        .menu-footer {
-            position: absolute;
-            bottom: 0;
+        .menu-footer{
+        position: absolute;
+        bottom: 0;
         }
 
-        .menu-footer .col-sm {
-            display: flex;
-            justify-content: space-between;
+        .menu-footer .col-sm{
+        display: flex;
+        justify-content: space-between;
         }
 
         .link a::after,
         .social a::after,
-        .menu-footer a::after {
-            position: absolute;
-            content: "";
-            top: 102.5%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #fff;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s cubic-bezier(0.6, 0, 0.4, 1);
+        .menu-footer a::after{
+        position: absolute;
+        content: "";
+        top: 102.5%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s cubic-bezier(0.6,0,0.4,1);
         }
 
         .link a:hover::after,
         .social a:hover::after,
-        .menu-footer a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .menu-footer a:hover::after{
+        transform: scaleX(1);
+        transform-origin: left;
         }
 
 
-        .container {
-            position: relative;
-            width: 100vw;
-            height: 100svh;
-            will-change: transform;
-            transform-origin: right top;
-            /* Key for the peeling animation */
-            z-index: 200;
-            /* Placed above the menu elements */
-            background-color: var(--background-color);
-            /* Ensure background is set */
+        .container{ /* !!! */
+        position: relative;
+        width: 100%;
+        height: 100%;
+        will-change: transform;
+        transform-origin: right top;
         }
 
-        .hero3 {
-            position: relative;
-            width: 100vw;
-            height: 100svh;
-            padding: 2.5em;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
+        .hero3{
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        padding: 2.5em;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
         }
 
-        .hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100svh;
+        z-index: -1;
+        }
+
+        .hero h3{
+        width: 80%;
+        }
+
+        .menu-toggle p#menu-close{
+        opacity: 0;
+        transform: translateX(-5px) translateY(10px) rotate(5deg);
+        }
+
+        .link a, .social a{
+        transform: translateY(120%);
+        opacity: 0.25;
+        }
+
+        .menu-content{
+        transform: translateX(-100px) translateY(-100px) scale(1.5) rotate(-150deg);
+        opacity: 0.25;
+        }
+
+        .menu-overlay{
+        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+        }
+
+        @media (max-width:900px){
+        .hero3 h3{
             width: 100%;
-            height: 100svh;
-            z-index: -1;
+            font-size: 4rem;
+            letter-spacing: 0;
         }
 
-        .hero h3 {
-            width: 80%;
+        .menu-items .col-lg{
+            display: none;
         }
 
-        .menu-toggle p#menu-close {
-            opacity: 0;
-            transform: translateX(-5px) translateY(10px) rotate(5deg);
+        .link a::after,
+        .social a::after,
+        .menu-footer a::after{
+            display: none;
         }
-
-        .link a,
-        .social a {
-            transform: translateY(120%);
-            opacity: 0.25;
-        }
-
-
-        @media (max-width:900px) {
-            .hero3 h3 {
-                width: 100%;
-                font-size: 4rem;
-                letter-spacing: 0;
-            }
-
-            .menu-items .col-lg {
-                display: none;
-            }
-
-            .link a::after,
-            .social a::after,
-            .menu-footer a::after {
-                display: none;
-            }
         }
 
         main {
@@ -440,22 +444,21 @@
         }
 
         main>article:first-child>.article-image-section {
-            background-image: url("https://plus.unsplash.com/premium_photo-1723385420783-2e6795e0af8b?q=80&w=1398&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-image: url(../public/10.png);
         }
 
 
         main>article:nth-child(2)>.article-image-section {
-            background-image: url("https://images.unsplash.com/photo-1707150159241-860387cce27b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-image: url(../public/11.png);
         }
 
 
         main>article:nth-child(3)>.article-image-section {
-            background-image: url("https://images.unsplash.com/photo-1632912913136-f140f85b187e?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-image: url(../public/12.png);
         }
 
-
         main>article:nth-child(4)>.article-image-section {
-            background-image: url("https://images.unsplash.com/photo-1649583747364-4ce16d531e7a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-image: url(../public/13.png);
         }
 
 
@@ -711,173 +714,163 @@
     </style>
 </head>
 
-<body>
+    <body>
 
-    <!-- 1. Menu Overlay (The dark background that is revealed) -->
-    <div class="menu-overlay"></div>
-
-    <!-- 2. Menu Content (The links and images that sit on top of the overlay) -->
-    <div class="menu-content">
-        <div class="menu-items">
-            <div class="col-lg">
-                <!-- NOTE: Ensure you have public/beach.jpg, public/nature.jpg, public/nature2.jpg available -->
-                <div class="menu-preview-img"><img src="https://placehold.co/1000x800/222222/FFFFFF?text=Menu+Preview"
-                        alt="beach"></div>
-            </div>
-            <div class="col-sm">
-                <div class="menu-links">
-                    <div class="link">
-                        <a class="white_text" href="../index.html"
-                            data-img="https://placehold.co/1000x800/222222/FFFFFF?text=Nature+1">Home</a>
+        <div class="menu-overlay">
+                <div class="menu-content">
+                    <div class="menu-items">
+                        <div class="col-lg">
+                            <div class="menu-preview-img"><img src="public/beach.jpg" alt="beach"></div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="menu-links">
+                                <div class="link">
+                                    <a class="white_text" href="../index.html" data-img="../public/1.png">Home</a>
+                                </div>
+                                <div class="link">
+                                    <a class="white_text" href="/MMT 2nd page/index.html" data-img="../public/2.png">About</a>
+                                </div>
+                                <div class="link">
+                                    <a class="white_text" href="../ENGLISH VIDEO.mp4" data-img="../public/3.png">Video (Eng)</a>
+                                </div>
+                                <div class="link">
+                                    <a class="white_text" href="../UPDATEDMAORI.mp4" data-img="../public/4.png">Video (Māori)</a>
+                                </div>
+                            </div> 
+                            <div class="menu-socials">
+                                <div class="socials white_text"><a href="https://www.instagram.com/fairy.tern?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Claire Greenwell</a></div>
+                                <div class="socials white_text"><a href="https://www.nzbirdsonline.org.nz/species/fairy-tern">Codex</a></div>
+                                <div class="socials white_text"><a href="https://www.youtube.com/watch?v=WgBwzXzTd34">Youtube</a></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="link">
-                        <a class="white_text" href="/MMT 2nd page/index.html"
-                            data-img="https://placehold.co/1000x800/222222/FFFFFF?text=Nature+2">About</a>
-                    </div>
-                    <div class="link">
-                        <a class="white_text" href="#"
-                            data-img="https://placehold.co/1000x800/222222/FFFFFF?text=Nature+3">Credits</a>
+                    <div class="menu-footer">
+                        <div class="col-lg">
+                            <a class="white_text" href="#">Run Sequence</a>
+                        </div>
+                        <div class="col-sm">
+                            <a class="white_text" href="#">Origin</a>
+                            <a class="white_text" href="#">Join the Save</a>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-socials">
-                    <div class="socials white_text"><a href="#">Instagram</a></div>
-                    <div class="socials white_text"><a href="https://www.nzbirdsonline.org.nz/species/fairy-tern">Codex</a></div>
-                    <div class="socials white_text"><a href="https://www.youtube.com/watch?v=WgBwzXzTd34">Youtube</a></div>
-                </div>
             </div>
+
+        <nav>
+            <div class="menu-toggle">
+                <p class="white_text" id="menu-open">Menu</p>
+                <p class="white_text" id="menu-close">Close</p>
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <main>
+                <article data-index="0" data-status="active">
+                    <div class="article-image-section article-section"></div>
+                    <div class="article-description-section article-section">
+                        <div class="glowing-text">
+                            <span>W</span>
+                            <span>E</span>
+                            <span>L</span>
+                            <span>C</span>
+                            <span>O</span>
+                            <span>M</span>
+                            <span>E</span>
+                            <span>&nbsp;</span>
+                            <span>T</span>
+                            <span>O</span>
+                            <span>&nbsp;</span>
+
+                            <span class="glow special">F</span>
+                            <span class="glow special">A</span>
+                            <span class="glow special">I</span>
+                            <span class="glow special">R</span>
+                            <span class="glow special">Y</span>
+                            <span class="glow special">T</span>
+                            <span class="glow special">E</span>
+                            <span class="glow special">R</span>
+                            <span class="glow special">N</span>
+                        </div>
+                        <br>
+                        <p>
+                            The <span class="glow">New Zealand</span> fairy tern, or tara iti, is one of the rarest birds in the world,
+                            with fewer than 40 individuals remaining. Conservation efforts are vital to protect its fragile nesting sites and help the population recover.
+                        </p>
+                    </div>
+                    <div class="article-title-section article-section">
+                        <h2>CRITICALLY ENDANGERED: TARA ITI</h2>
+                    </div>
+                    <div class="article-nav-section article-section">
+                        <button class="article-nav-button" type="button" onclick="handleLeftClick()">
+                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="article-nav-button" type="button" onclick="handleRightClick()">
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+                <article data-index="1" data-status="inactive">
+                    <div class="article-image-section article-section"></div>
+                    <div class="article-description-section article-section">
+                        <p>
+                            The Fairy Tern builds its nests directly on open sandy beaches and sandspits, making them highly vulnerable to tides, storms, and human disturbance. Their survival depends on protecting these critical coastal habitats.
+                        </p>
+                    </div>
+                    <div class="article-title-section article-section">
+                        <h2>A FRAGILE HOME ON THE SAND</h2>
+                    </div>
+                    <div class="article-nav-section article-section">
+                        <button class="article-nav-button" type="button" onclick="handleLeftClick()">
+                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="article-nav-button" type="button" onclick="handleRightClick()">
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+                <article data-index="2" data-status="inactive">
+                    <div class="article-image-section article-section"></div>
+                    <div class="article-description-section article-section">
+                        <p>
+                            Predators like stoats and rats, coupled with human interference from beach vehicles and dogs, pose the biggest threat to eggs and chicks. Every lost nest is a major setback for the tiny population.
+                        </p>
+                    </div>
+                    <div class="article-title-section article-section">
+                        <h2>THE THREATS TO SURVIVAL</h2>
+                    </div>
+                    <div class="article-nav-section article-section">
+                        <button class="article-nav-button" type="button" onclick="handleLeftClick()">
+                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="article-nav-button" type="button" onclick="handleRightClick()">
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+                <article data-index="3" data-status="inactive">
+                    <div class="article-image-section article-section"></div>
+                    <div class="article-description-section article-section">
+                        <p>
+                            Dedicated DOC staff and volunteers are working tirelessly to save the tara iti. This includes intensive pest control, fencing nesting sites, and actively monitoring the population to secure its future.
+                        </p>
+                    </div>
+                    <div class="article-title-section article-section">
+                        <h2>JOIN THE CONSERVATION EFFORT</h2>
+                    </div>
+                    <div class="article-nav-section article-section">
+                        <button class="article-nav-button" type="button" onclick="handleLeftClick()">
+                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="article-nav-button" type="button" onclick="handleRightClick()">
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+                <button id="nav-toggle" type="button" onclick="toggleNav()"></button>
+            </main>
         </div>
-        <div class="menu-footer">
-            <div class="col-lg">
-                <a class="white_text" href="#">Run Sequence</a>
-            </div>
-            <div class="col-sm">
-                <a class="white_text" href="#">Origin</a>
-                <a class="white_text" href="#">Join the Save</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. The main NAV (Moved outside the container so it stays in place) -->
-    <nav>
-        <div class="menu-toggle">
-            <p class="white_text" id="menu-open">Menu</p>
-            <p class="white_text" id="menu-close">Close</p>
-        </div>
-    </nav>
-
-
-    <!-- 4. The main content CONTAINER (This is the element that GSAP targets and moves) -->
-    <div class="container">
-        <main>
-            <article data-index="0" data-status="active">
-                <div class="article-image-section article-section"></div>
-                <div class="article-description-section article-section">
-                    <div class="glowing-text">
-                        <span>W</span>
-                        <span>E</span>
-                        <span>L</span>
-                        <span>C</span>
-                        <span>O</span>
-                        <span>M</span>
-                        <span>E</span>
-                        <span>&nbsp;</span>
-                        <span>T</span>
-                        <span>O</span>
-                        <span>&nbsp;</span>
-
-                        <span class="glow special">F</span>
-                        <span class="glow special">A</span>
-                        <span class="glow special">I</span>
-                        <span class="glow special">R</span>
-                        <span class="glow special">Y</span>
-                        <span class="glow special">T</span>
-                        <span class="glow special">E</span>
-                        <span class="glow special">R</span>
-                        <span class="glow special">N</span>
-                    </div>
-                    <br>
-                    <p>
-                        The <span class="glow">New Zealand</span> fairy tern, or tara iti, is one of the rarest birds in the world,
-                        with fewer than 40 individuals remaining. Conservation efforts are vital to protect its fragile nesting sites and help the population recover.
-                    </p>
-                </div>
-                <div class="article-title-section article-section">
-                    <h2>LET YOUR IDEAS BECOME REALITY</h2>
-                </div>
-                <div class="article-nav-section article-section">
-                    <button class="article-nav-button" type="button" onclick="handleLeftClick()">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="article-nav-button" type="button" onclick="handleRightClick()">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </article>
-            <article data-index="1" data-status="inactive">
-                <div class="article-image-section article-section"></div>
-                <div class="article-description-section article-section">
-                    <p>
-                        The <span class="glow">New Zealand</span> fairy tern, or tara iti, is one of the rarest birds in the world,
-                        with fewer than 40 individuals remaining. Conservation efforts are vital to protect its fragile nesting sites and help the population recover.
-                    </p>
-                </div>
-                <div class="article-title-section article-section">
-                    <h2>MILLIONS OF POSSIBILITIES TO EXPLORE</h2>
-                </div>
-                <div class="article-nav-section article-section">
-                    <button class="article-nav-button" type="button" onclick="handleLeftClick()">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="article-nav-button" type="button" onclick="handleRightClick()">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </article>
-            <article data-index="2" data-status="inactive">
-                <div class="article-image-section article-section"></div>
-                <div class="article-description-section article-section">
-                    <p>
-                        The <span class="glow">New Zealand</span> fairy tern, or tara iti, is one of the rarest birds in the world,
-                        with fewer than 40 individuals remaining.
-                    </p>
-                </div>
-                <div class="article-title-section article-section">
-                    <h2>WE WILL BE WITH YOU ALL THE WAY</h2>
-                </div>
-                <div class="article-nav-section article-section">
-                    <button class="article-nav-button" type="button" onclick="handleLeftClick()">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="article-nav-button" type="button" onclick="handleRightClick()">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </article>
-            <article data-index="3" data-status="inactive">
-                <div class="article-image-section article-section"></div>
-                <div class="article-description-section article-section">
-                    <p>
-                        The <span class="glow">New Zealand</span> fairy tern, or tara iti, is one of the rarest birds in the world,
-                        with fewer than 40 individuals remaining.
-                    </p>
-                </div>
-                <div class="article-title-section article-section">
-                    <h2>WE ARE TRYING TO HELP!</h2>
-                </div>
-                <div class="article-nav-section article-section">
-                    <button class="article-nav-button" type="button" onclick="handleLeftClick()">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="article-nav-button" type="button" onclick="handleRightClick()">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </article>
-            <div id="trailer"></div>
-
-            <button id="nav-toggle" type="button" onclick="toggleNav()"></button>
-        </main>
-    </div>
+    </body>
 
     <!-- Combined JavaScript -->
     <script>
@@ -924,7 +917,6 @@
             nav.dataset.toggled = nav.dataset.toggled === "true" ? "false" : "true";
         }
 
-        // Expose a dummy toggleNav for the button click (since your HTML calls it)
         const toggleNav = () => console.log("Nav toggle clicked");
 
 
@@ -933,26 +925,6 @@
 
             nav.dataset.toggled = "false";
         };
-
-
-        const trailer = document.getElementById("trailer");
-
-        window.onmousemove = e => {
-            const x = e.clientX - trailer.offsetWidth / 2,
-                y = e.clientY - trailer.offsetHeight / 2;
-
-            const keyframes = {
-                transform: `translate(${x}px, ${y}px)`
-            }
-
-            trailer.animate(keyframes, {
-                duration: 800,
-                fill: "forwards"
-            });
-        }
-
-        // Handle mouseover animation placeholder (was missing an element selector)
-        // document.querySelector("").onmouseover = (event) => { /* ... */ };
 
 
         document.addEventListener("DOMContentLoaded", () => {
