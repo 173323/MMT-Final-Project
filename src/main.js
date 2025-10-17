@@ -1,6 +1,6 @@
 // Splash Screen
-let intro = document.querySelector('.intro')
-let logoSpan = document.querySelectorAll('.logo')
+let intro = document.querySelector('.intro');
+let logoSpan = document.querySelectorAll('.logo');
 
 window.addEventListener('DOMContentLoaded', ()=>{  // Spawns in my two elements when the website has been loaded
 
@@ -753,8 +753,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function resetPreviewImage() {
         menuPreviewImg.innerHTML = "";
         const defaultPreviewImg = document.createElement("img");
-        // NOTE: Using a placeholder image since public/beach.jpg isn't available
-        defaultPreviewImg.src = "https://placehold.co/1000x800/222222/FFFFFF?text=Menu+Preview";
+        defaultPreviewImg.src = "public/beach.jpg";
         menuPreviewImg.appendChild(defaultPreviewImg);
     }
 
